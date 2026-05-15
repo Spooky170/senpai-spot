@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiClock, FiTrendingUp } from 'react-icons/fi';
+import { FiArrowRight, FiTrendingUp } from 'react-icons/fi';
 import { BlogPost } from '@/types';
-import { formatDate, getCategoryColor, getCategoryLabel } from '@/lib/utils';
+import { getCategoryColor, getCategoryLabel } from '@/lib/utils';
 
 interface HeroSectionProps {
   featuredPosts: BlogPost[];
@@ -103,14 +103,6 @@ export default function HeroSection({ featuredPosts }: HeroSectionProps) {
               transition={{ delay: 0.65, duration: 0.6 }}
               className="flex flex-wrap items-center gap-5"
             >
-              <div className="flex items-center gap-4 text-xs text-white/40">
-                <span>{formatDate(primary.publishedAt)}</span>
-                <span className="flex items-center gap-1">
-                  <FiClock size={11} />
-                  {primary.readingTime} min read
-                </span>
-                <span>By {primary.author}</span>
-              </div>
               <Link
                 href={`/post/${primary.slug}`}
                 className="btn-primary flex items-center gap-2 group/btn"
@@ -157,7 +149,6 @@ export default function HeroSection({ featuredPosts }: HeroSectionProps) {
                       <h3 className="text-sm font-cinzel font-bold text-white/85 group-hover:text-orange-300 transition-colors duration-300 line-clamp-2 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-[10px] text-white/30 mt-1">{formatDate(post.publishedAt)}</p>
                     </div>
                   </Link>
                 );
