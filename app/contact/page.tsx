@@ -28,12 +28,21 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: 'cc383378-c5aa-4330-b5d8-7ec1f0b6dfa5',
+          name:       form.name,
+          email:      form.email,
+          subject:    `[Senpai Spot] ${form.subject} — from ${form.name}`,
+          message:    form.message,
+          from_name:  'Senpai Spot Contact Form',
+          botcheck:   false,
+        }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         setStatus('done');
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
