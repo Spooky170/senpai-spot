@@ -22,14 +22,26 @@ const SOCIAL = [
 
 export default function ContactPage() {
   const [form, setForm]     = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulate async send
-    await new Promise(r => setTimeout(r, 1500));
-    setStatus('done');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('done');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -57,6 +69,12 @@ export default function ContactPage() {
           <ScrollReveal>
             <div className="glass rounded-2xl p-8">
               <h2 className="text-xl font-cinzel font-bold text-white mb-6">Send Us a Message</h2>
+
+              {status === 'error' && (
+                <div className="mb-4 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  Something went wrong. Please try again or email us directly at contact@senpaispot.in
+                </div>
+              )}
 
               {status === 'done' ? (
                 <motion.div
