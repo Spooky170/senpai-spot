@@ -8,7 +8,7 @@ import PageTransition from '@/components/animations/PageTransition';
 import ScrollReveal   from '@/components/animations/ScrollReveal';
 
 const CONTACT_INFO = [
-  { icon: FiMail,    label: 'Email',    value: 'hello@senpaispot.com' },
+  { icon: FiMail,    label: 'Email',    value: 'contact@senpaispot.in' },
   { icon: FiMapPin,  label: 'Location', value: 'Tokyo, Japan (Virtual)' },
   { icon: FiClock,   label: 'Response', value: 'Within 24 hours'     },
 ];
