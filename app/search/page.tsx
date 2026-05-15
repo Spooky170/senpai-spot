@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { searchPosts, DEMO_POSTS } from '@/lib/blogger';
+import { searchPosts, DEMO_POSTS } from '@/lib/sanity';
 import PostCard       from '@/components/ui/PostCard';
 import SearchBar      from '@/components/ui/SearchBar';
 import ScrollReveal   from '@/components/animations/ScrollReveal';

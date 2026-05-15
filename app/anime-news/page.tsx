@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getPosts, getLatestPosts, DEMO_POSTS } from '@/lib/blogger';
+import { getPosts, getLatestPosts, DEMO_POSTS } from '@/lib/sanity';
 import PostCard        from '@/components/ui/PostCard';
 import SectionHeader   from '@/components/sections/SectionHeader';
 import Sidebar         from '@/components/layout/Sidebar';

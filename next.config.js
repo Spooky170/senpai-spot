@@ -45,6 +45,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+      {
+        protocol: 'https',
         hostname: '**.cdninstagram.com',
       },
     ],
@@ -53,7 +57,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/((?!studio).*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },

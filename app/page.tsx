@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FiArrowRight, FiZap } from 'react-icons/fi';
-import { getFeaturedPosts, getLatestPosts, getCategories, DEMO_POSTS } from '@/lib/blogger';
+import { getFeaturedPosts, getLatestPosts, getCategories, DEMO_POSTS } from '@/lib/sanity';
 import HeroSection    from '@/components/sections/HeroSection';
 import SectionHeader  from '@/components/sections/SectionHeader';
 import PostCard       from '@/components/ui/PostCard';

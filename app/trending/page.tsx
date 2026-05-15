@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getLatestPosts, DEMO_POSTS } from '@/lib/blogger';
+import { getLatestPosts, DEMO_POSTS } from '@/lib/sanity';
 import PostCard       from '@/components/ui/PostCard';
 import ScrollReveal   from '@/components/animations/ScrollReveal';
 import PageTransition from '@/components/animations/PageTransition';

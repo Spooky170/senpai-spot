@@ -7,7 +7,7 @@ export interface BlogPost {
   title:       string;
   slug:        string;
   excerpt:     string;
-  content:     string;
+  content:     string | any[];  // string (HTML) or Portable Text blocks
   author:      string;
   publishedAt: string;
   updatedAt:   string;

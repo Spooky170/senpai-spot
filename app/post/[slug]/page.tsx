@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FiArrowLeft, FiShare2, FiTag } from 'react-icons/fi';
 import { FaXTwitter, FaFacebook, FaReddit } from 'react-icons/fa6';
-import { getPostBySlug, getRelatedPosts, DEMO_POSTS } from '@/lib/blogger';
+import { getPostBySlug, getRelatedPosts, DEMO_POSTS } from '@/lib/sanity';
+import { PortableText } from '@portabletext/react';
 import { getCategoryColor, getCategoryLabel } from '@/lib/utils';
 import PostCard       from '@/components/ui/PostCard';
 import ScrollReveal   from '@/components/animations/ScrollReveal';
@@ -91,10 +92,12 @@ export default async function PostPage({ params }: PageProps) {
           {/* Post body */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_60px] gap-8">
             {/* Article content */}
-            <div
-              className="prose-anime max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div className="prose-anime max-w-none">
+              {Array.isArray(post.content)
+                ? <PortableText value={post.content} />
+                : <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              }
+            </div>
 
             {/* Sticky share sidebar */}
             <div className="hidden lg:flex flex-col items-center gap-3 sticky top-28 h-fit">
