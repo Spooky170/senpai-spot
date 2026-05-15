@@ -116,14 +116,15 @@ export default function ContactPage() {
                       required
                       value={form.subject}
                       onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-lg search-input text-sm bg-orange-500/5 border border-orange-500/20"
+                      className="w-full px-4 py-3 rounded-lg search-input text-sm bg-[#1a1a1a] border border-orange-500/20 text-white"
+                      style={{ colorScheme: 'dark' }}
                     >
-                      <option value="">Select a topic</option>
-                      <option value="collaboration">Collaboration / Sponsorship</option>
-                      <option value="guest-post">Guest Post Pitch</option>
-                      <option value="feedback">Feedback / Suggestions</option>
-                      <option value="correction">Correction Request</option>
-                      <option value="other">Other</option>
+                      <option value="" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Select a topic</option>
+                      <option value="collaboration" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Collaboration / Sponsorship</option>
+                      <option value="guest-post" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Guest Post Pitch</option>
+                      <option value="feedback" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Feedback / Suggestions</option>
+                      <option value="correction" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Correction Request</option>
+                      <option value="other" style={{ background: '#1a1a1a', color: '#f5f5f5' }}>Other</option>
                     </select>
                   </div>
 
