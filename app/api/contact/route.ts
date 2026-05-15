@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from:     'onboarding@resend.dev',
+        from:     'Senpai Spot <noreply@senpaispot.in>',
         to:       ['contact@senpaispot.in'],
         reply_to: email,
         subject:  `[Senpai Spot] ${subject} — from ${name}`,
