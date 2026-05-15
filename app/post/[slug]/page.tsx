@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { FiClock, FiCalendar, FiArrowLeft, FiShare2, FiTag } from 'react-icons/fi';
+import { FiArrowLeft, FiShare2, FiTag } from 'react-icons/fi';
 import { FaXTwitter, FaFacebook, FaReddit } from 'react-icons/fa6';
 import { getPostBySlug, getRelatedPosts, DEMO_POSTS } from '@/lib/blogger';
-import { formatDate, getCategoryColor, getCategoryLabel } from '@/lib/utils';
+import { getCategoryColor, getCategoryLabel } from '@/lib/utils';
 import PostCard       from '@/components/ui/PostCard';
 import ScrollReveal   from '@/components/animations/ScrollReveal';
 import PageTransition from '@/components/animations/PageTransition';
@@ -104,24 +104,6 @@ export default async function PostPage({ params }: PageProps) {
             <h1 className="font-cinzel font-black text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 text-balance">
               {post.title}
             </h1>
-
-            {/* Meta row */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/40 mb-6">
-              <span className="flex items-center gap-1.5">
-                <div className="w-6 h-6 rounded-full bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-[10px] text-orange-500 font-bold font-accent">
-                  {post.author.charAt(0).toUpperCase()}
-                </div>
-                {post.author}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <FiCalendar size={13} />
-                {formatDate(post.publishedAt)}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <FiClock size={13} />
-                {post.readingTime} min read
-              </span>
-            </div>
 
             {/* Divider */}
             <div className="h-px bg-gradient-to-r from-orange-500/30 via-orange-500/10 to-transparent mb-8" />
