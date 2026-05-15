@@ -160,11 +160,7 @@ export default function AboutPage() {
                 Welcome to Senpai Spot. The information provided on this site is intended for general informational,
                 entertainment, and educational purposes related to anime, manga, and related media content. By accessing
                 or using this Site, you acknowledge that you have read, understood, and agreed to the terms of this Legal
-                Disclaimer, as well as our{' '}
-                <Link href="/privacy-policy" className="text-orange-500 hover:text-orange-400 underline underline-offset-2">
-                  Privacy Policy
-                </Link>
-                .
+                Disclaimer.
               </p>
 
               {[
