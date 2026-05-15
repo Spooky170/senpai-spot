@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Senpai Spot — Launch Setup</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    background: #111;
+    border: 1px solid rgba(255,122,0,0.25);
+    border-radius: 16px;
+    padding: 48px;
+    max-width: 560px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(255,122,0,0.1);
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg,#ff7a00,#ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .sub { color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 32px; letter-spacing: 0.05em; }
+  .step {
+    background: rgba(255,122,0,0.06);
+    border: 1px solid rgba(255,122,0,0.15);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #ff7a00;
+    color: #000;
+    font-weight: 900;
+    font-size: 0.8rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+  code {
+    background: rgba(255,122,0,0.12);
+    color: #ff9500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.85em;
+  }
+  .big-btn {
+    display: block;
+    margin: 28px auto 0;
+    background: linear-gradient(135deg,#ff7a00,#ff4500);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(255,122,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .big-btn:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,122,0,0.6); }
+  .note { margin-top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+  #status { margin-top: 20px; font-size: 0.85rem; color: #ff7a00; min-height: 20px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>SENPAI SPOT</h1>
+  <p class="sub">One-click setup &amp; launch</p>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="step-text">Press <code>Win + R</code> on your keyboard</div>
+  </div>
+  <div class="step">
+    <div class="num">2</div>
+    <div class="step-text">Type <code>powershell</code> and press Enter</div>
+  </div>
+  <div class="step">
+    <div class="num">3</div>
+    <div class="step-text">Paste the command below and press Enter</div>
+  </div>
+
+  <div class="step" style="margin-top:20px; flex-direction:column; align-items:stretch; gap:8px;">
+    <div style="font-size:0.75rem; color:rgba(255,122,0,0.7); letter-spacing:0.1em; text-transform:uppercase; font-weight:700;">Copy this command:</div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <code id="cmd" style="flex:1; padding:10px; border-radius:6px; font-size:0.8rem; word-break:break-all; display:block; background:rgba(0,0,0,0.4); color:#ff9500;">
+        cd "C:\Users\bhupe\OneDrive\Documents\Claude\Projects\Anime Blog website"; npm install --no-audit --no-fund; npm run dev
+      </code>
+      <button onclick="copyCmd()" style="background:#ff7a00;border:none;color:#000;font-weight:800;padding:10px 16px;border-radius:6px;cursor:pointer;white-space:nowrap;font-size:0.8rem;">
+        Copy
+      </button>
+    </div>
+  </div>
+
+  <div id="status"></div>
+  <p class="note">The server starts at http://localhost:3000 — your Blogger posts load automatically</p>
+</div>
+
+<script>
+function copyCmd() {
+  const cmd = `cd "C:\\Users\\bhupe\\OneDrive\\Documents\\Claude\\Projects\\Anime Blog website"; npm install --no-audit --no-fund; npm run dev`;
+  navigator.clipboard.writeText(cmd).then(() => {
+    document.getElementById('status').textContent = '✓ Command copied! Paste it in PowerShell.';
+  }).catch(() => {
+    document.getElementById('status').textContent = 'Select and copy the command manually.';
+  });
+}
+</script>
+</body>
+</html>
