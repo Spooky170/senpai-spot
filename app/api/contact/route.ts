@@ -53,9 +53,10 @@ export async function POST(req: NextRequest) {
 
     const data = await res.json();
 
+    console.log('[Contact] Resend status:', res.status, JSON.stringify(data));
+
     if (!res.ok) {
-      console.error('[Contact] Resend error:', data);
-      return NextResponse.json({ error: data.message || 'Failed to send.' }, { status: 500 });
+      return NextResponse.json({ error: data.message || 'Failed to send.', detail: data }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });

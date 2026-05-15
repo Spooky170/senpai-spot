@@ -23,6 +23,7 @@ const SOCIAL = [
 export default function ContactPage() {
   const [form, setForm]     = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,13 +34,16 @@ export default function ContactPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+      const data = await res.json();
       if (res.ok) {
         setStatus('done');
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
+        setErrorMsg(data.error || 'Unknown error');
         setStatus('error');
       }
-    } catch {
+    } catch (err) {
+      setErrorMsg(String(err));
       setStatus('error');
     }
   };
@@ -72,7 +76,7 @@ export default function ContactPage() {
 
               {status === 'error' && (
                 <div className="mb-4 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
-                  Something went wrong. Please try again or email us directly at contact@senpaispot.in
+                  Error: {errorMsg || 'Something went wrong.'} Please try again or email us directly at contact@senpaispot.in
                 </div>
               )}
 
