@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import { BlogPost } from '@/types';
-import { formatDate, getCategoryColor, getCategoryLabel } from '@/lib/utils';
+import { getCategoryColor, getCategoryLabel } from '@/lib/utils';
 
 interface FeaturedPostCardProps {
   post:  BlogPost;
@@ -72,16 +72,7 @@ export default function FeaturedPostCard({ post, large = false, index = 0 }: Fea
 
         {/* Meta */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-xs text-white/40">
-            <span className="flex items-center gap-1">
-              <FiCalendar size={11} />
-              {formatDate(post.publishedAt)}
-            </span>
-            <span className="flex items-center gap-1">
-              <FiClock size={11} />
-              {post.readingTime} min read
-            </span>
-          </div>
+          <div/>
           <Link
             href={`/post/${post.slug}`}
             className="flex items-center gap-1 text-xs text-orange-500 font-accent font-semibold tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-all duration-300 hover:gap-2"

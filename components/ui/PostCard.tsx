@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FiClock, FiCalendar } from 'react-icons/fi';
 import { BlogPost } from '@/types';
-import { formatDate, getCategoryColor, getCategoryLabel } from '@/lib/utils';
+import { getCategoryColor, getCategoryLabel } from '@/lib/utils';
 
 interface PostCardProps {
   post:       BlogPost;
@@ -49,16 +48,6 @@ export default function PostCard({ post, priority = false, index = 0, variant = 
               </h3>
             </Link>
           </div>
-          <div className="flex items-center gap-3 mt-2">
-            <span className="text-[10px] text-white/30 flex items-center gap-1">
-              <FiCalendar size={10} />
-              {formatDate(post.publishedAt)}
-            </span>
-            <span className="text-[10px] text-white/30 flex items-center gap-1">
-              <FiClock size={10} />
-              {post.readingTime}m
-            </span>
-          </div>
         </div>
       </motion.article>
     );
@@ -76,7 +65,6 @@ export default function PostCard({ post, priority = false, index = 0, variant = 
           <h3 className="text-sm text-white/70 group-hover:text-orange-400 transition-colors duration-300 line-clamp-2 leading-snug">
             {post.title}
           </h3>
-          <span className="text-[10px] text-white/30 mt-1 block">{formatDate(post.publishedAt)}</span>
         </Link>
       </motion.article>
     );
@@ -115,11 +103,6 @@ export default function PostCard({ post, priority = false, index = 0, variant = 
             {getCategoryLabel(category)}
           </span>
         </div>
-        {/* Reading time badge */}
-        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full bg-black/50 backdrop-blur-sm text-[10px] text-white/70">
-          <FiClock size={9} />
-          {post.readingTime}m
-        </div>
       </Link>
 
       {/* Content */}
@@ -133,19 +116,6 @@ export default function PostCard({ post, priority = false, index = 0, variant = 
           </p>
         </Link>
 
-        {/* Meta footer */}
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-[9px] text-orange-500 font-bold font-accent flex-shrink-0">
-              {post.author.charAt(0).toUpperCase()}
-            </div>
-            <span className="text-xs text-white/35 truncate max-w-[80px]">{post.author}</span>
-          </div>
-          <span className="text-xs text-white/30 flex items-center gap-1">
-            <FiCalendar size={10} />
-            {formatDate(post.publishedAt)}
-          </span>
-        </div>
       </div>
     </motion.article>
 
