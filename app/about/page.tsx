@@ -143,6 +143,88 @@ export default function AboutPage() {
           </section>
         </ScrollReveal>
 
+        {/* Legal Disclaimer */}
+        <ScrollReveal>
+          <section id="legal-disclaimer">
+            <div className="mb-10">
+              <div className="section-divider mb-4" />
+              <h2 className="text-3xl sm:text-4xl font-cinzel font-bold text-white">
+                Legal <span className="gradient-text">Disclaimer</span>
+              </h2>
+              <p className="text-white/40 mt-2 text-sm">Last updated: May 2026</p>
+            </div>
+
+            <div className="glass rounded-2xl border border-orange-500/10 p-8 sm:p-10 space-y-8 text-white/60 leading-relaxed text-sm">
+
+              <p>
+                Welcome to Senpai Spot. The information provided on this site is intended for general informational,
+                entertainment, and educational purposes related to anime, manga, and related media content. By accessing
+                or using this Site, you acknowledge that you have read, understood, and agreed to the terms of this Legal
+                Disclaimer, as well as our{' '}
+                <Link href="/privacy-policy" className="text-orange-500 hover:text-orange-400 underline underline-offset-2">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
+
+              {[
+                {
+                  num: '1',
+                  title: 'General Information',
+                  body: `All content on Senpai Spot, including articles, reviews, recaps, analyses, and original written pieces, is created for informational and entertainment purposes only. While we make effort to ensure accuracy, we do not guarantee that the information provided on this Site is complete, current, or error-free. The views and opinions expressed belong solely to the authors and contributors and do not necessarily reflect the opinions of any anime studios, publishers, or licensors.\n\nYou acknowledge that any reliance you place on the information found on this Site is strictly at your own risk. We are not responsible or liable for any loss, damage, or inconvenience caused as a result or depending on information obtained from Senpai Spot.`,
+                },
+                {
+                  num: '2',
+                  title: 'Creative and Editorial Content',
+                  body: `Senpai Spot features creative works such as fan-made scripts, story analyses, and rewritten scenarios. These are artistic interpretations for fan engagement and are not official works associated with any anime, manga, or franchise. All characters, titles, logos, and other intellectual properties referenced remain the property of their respective owners. Such references are made under fair use for commentary, review, or educational purposes.\n\nWe respect the creative rights of the original authors, studios, and publishers. If you are a right holder and believe that any material on our Site actively break the terms of agreement upon your copyright or trademark, please contact us at contact@senpaispot.in so we can promptly address your concern.`,
+                },
+                {
+                  num: '3',
+                  title: 'External Links and Third-Party Content',
+                  body: `Our Site may contain links to third-party websites or resources for convenience and additional information. We do not control or endorse the content, accuracy, or practices of any external sites. Visiting such websites is your own will, and you should review their individual terms and privacy policies before engaging with them. Senpai Spot is not responsible for any damages or issues that may arise for accessing or using third-party websites linked from our platform.`,
+                },
+                {
+                  num: '4',
+                  title: 'Affiliate and Advertising Disclosure',
+                  body: `Senpai Spot may participate in affiliate marketing or display third-party advertisements, including those provided through advertising networks such as Google AdSense. This means we may earn a commission when you click on or purchase products through certain links on our Site. Such partnerships helps us maintain and improve our content at no additional cost to you. However, all recommendations or reviews are based on genuine opinions, and we aim to maintain transparency and integrity in all promotional content.`,
+                },
+                {
+                  num: '5',
+                  title: 'No Professional Advice',
+                  body: `The content provided on Senpai Spot does not constitute professional advice of any kind, including but not limited to business, financial, or legal guidance. Any actions you take based on the information from our Site are taken at your own responsibility. We recommend verifying details or consulting a qualified professional if you require official guidance.`,
+                },
+                {
+                  num: '6',
+                  title: 'Limitation of Liability',
+                  body: `To the fullest extend permitted by law, Senpai Spot, its owners, writers, and affiliates shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the Site or its content. This includes damages arising from errors, omissions, interruptions, or loss of data.`,
+                },
+                {
+                  num: '7',
+                  title: 'Changes to This Disclaimer',
+                  body: `We reserve the right to update or modify this Legal Disclaimer at any time without prior notice. Any changes will take effect immediately upon posting on this page. You are encouraged to review this section regularly to stay informed of any updates.`,
+                },
+              ].map(({ num, title, body }) => (
+                <div key={num} className="border-t border-white/5 pt-6">
+                  <h3 className="font-cinzel font-bold text-white text-base mb-3">
+                    <span className="text-orange-500 mr-2">{num}.</span>{title}
+                  </h3>
+                  {body.split('\n\n').map((para, i) => (
+                    <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+                  ))}
+                </div>
+              ))}
+
+              <div className="border-t border-orange-500/20 pt-6">
+                <p className="text-white/50">
+                  By continuing to use Senpai Spot, you acknowledge and agree to this Legal Disclaimer in its entirety.
+                  If you do not agree with any part of these terms, please discontinue use of the Site.
+                </p>
+              </div>
+
+            </div>
+          </section>
+        </ScrollReveal>
+
         {/* Social / CTA */}
         <ScrollReveal>
           <div className="rounded-2xl bg-gradient-to-br from-[#1a0500] via-[#0d0d0d] to-[#050505] border border-orange-500/15 p-10 text-center">
