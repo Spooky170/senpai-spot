@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FiArrowLeft, FiShare2, FiTag } from 'react-icons/fi';
@@ -61,28 +60,8 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <PageTransition>
       <article>
-        {/* Hero image */}
-        <div className="relative h-[50vh] sm:h-[60vh] lg:h-[65vh] overflow-hidden">
-          {post.thumbnail ? (
-            <Image
-              src={post.thumbnail}
-              alt={post.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              priority
-              unoptimized
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#1a0500] via-[#0d0d0d] to-[#050505]" />
-          )}
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/60 via-transparent to-transparent" />
-        </div>
-
         {/* Post header */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 relative z-10">
           <div className="mb-6">
             {/* Back link */}
             <Link
