@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Your go-to source for the latest anime news, in-depth reviews, manga updates, and trending discussions.',
 };
 
-export const revalidate = 300; // 5-minute ISR
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   let featuredPosts  = await getFeaturedPosts(3);

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Trending',
   description: "What's hot in anime right now. Discover the trending anime, manga, and news stories on Senpai Spot.",
 };
-export const revalidate = 180; // 3 min -- more frequent for trending
+export const dynamic = 'force-dynamic';
 
 export default async function TrendingPage() {
   let posts = await getLatestPosts(12);

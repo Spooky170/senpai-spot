@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'In-depth anime reviews covering all seasons and genres. Find out which anime is worth watching with expert analysis from Senpai Spot.',
 };
 
-export const revalidate = 300;
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
   searchParams: Promise<{ page?: string }>;

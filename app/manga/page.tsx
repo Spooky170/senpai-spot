@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Manga',
   description: 'Manga news, reviews, chapter discussions and recommendations. Stay updated with the best manga on Senpai Spot.',
 };
-export const revalidate = 300;
+export const dynamic = 'force-dynamic';
 
 interface PageProps { searchParams: Promise<{ page?: string }> }
 

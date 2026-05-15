@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Stay up-to-date with the latest anime news, announcements, episode releases, and more on Senpai Spot.',
 };
 
-export const revalidate = 300;
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
   searchParams: Promise<{ page?: string }>;
