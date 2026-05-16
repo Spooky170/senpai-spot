@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FiTrendingUp, FiZap } from 'react-icons/fi';
 import { BlogPost, BlogCategory } from '@/types';
 import { formatDate, getCategoryColor } from '@/lib/utils';
+import SubscribeForm from '@/components/ui/SubscribeForm';
 
 interface SidebarProps {
   trendingPosts?: BlogPost[];
@@ -93,25 +94,21 @@ export default function Sidebar({
 
       {/* Newsletter CTA Widget */}
       <div className="sidebar-widget overflow-hidden">
-        <div className="relative p-6 text-center">
-          {/* Background glow */}
+        <div className="relative p-6">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-orange-600/5" />
           <div className="relative">
-            <div className="w-12 h-12 rounded-full bg-orange-500/15 border border-orange-500/25 flex items-center justify-center mx-auto mb-4">
-              <FiZap className="text-orange-500" size={20} />
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-full bg-orange-500/15 border border-orange-500/25 flex items-center justify-center">
+                <FiZap className="text-orange-500" size={14} />
+              </div>
+              <h3 className="font-cinzel font-bold text-sm tracking-wider text-white">
+                Stay Updated
+              </h3>
             </div>
-            <h3 className="font-cinzel font-bold text-sm tracking-wider text-white mb-2">
-              Stay Updated
-            </h3>
             <p className="text-xs text-white/50 mb-4 leading-relaxed">
-              Get the latest anime news and reviews delivered fresh to your feed.
+              Get the latest anime news and reviews delivered to your inbox.
             </p>
-            <Link
-              href="/contact"
-              className="btn-primary text-xs py-2 px-6 inline-block"
-            >
-              Subscribe Now
-            </Link>
+            <SubscribeForm compact />
           </div>
         </div>
       </div>

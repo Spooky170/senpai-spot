@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaXTwitter, FaInstagram, FaYoutube, FaDiscord } from 'react-icons/fa6';
-import { FiMail, FiArrowUpRight } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
+import SubscribeForm from '@/components/ui/SubscribeForm';
 
 const FOOTER_LINKS = {
   'Browse': [
@@ -69,15 +70,12 @@ export default function Footer() {
             </div>
 
             {/* Newsletter mini-CTA */}
-            <div className="flex items-center gap-2 p-4 rounded-lg bg-orange-500/5 border border-orange-500/10">
-              <FiMail className="text-orange-500 shrink-0" size={18} />
-              <Link
-                href="/contact"
-                className="text-sm text-white/60 hover:text-white transition-colors group flex items-center gap-1"
-              >
-                Subscribe for weekly anime updates
-                <FiArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+            <div className="p-4 rounded-lg bg-orange-500/5 border border-orange-500/10 space-y-3">
+              <div className="flex items-center gap-2">
+                <FiMail className="text-orange-500 shrink-0" size={16} />
+                <span className="text-sm text-white/70 font-medium">Weekly anime updates</span>
+              </div>
+              <SubscribeForm compact />
             </div>
           </div>
 
