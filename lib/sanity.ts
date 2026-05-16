@@ -172,6 +172,13 @@ export async function searchPosts(query: string, count = 20): Promise<BlogPost[]
   }
 }
 
+const CATEGORY_DISPLAY: Record<string, string> = {
+  'anime-news': 'Anime News',
+  'reviews':    'Reviews',
+  'manga':      'Manga',
+  'trending':   'Trending',
+}
+
 export async function getCategories(): Promise<BlogCategory[]> {
   const cats = ['anime-news', 'reviews', 'manga', 'trending']
   try {
@@ -180,9 +187,9 @@ export async function getCategories(): Promise<BlogCategory[]> {
         client.fetch(`count(*[_type == "post" && $cat in categories])`, { cat })
       )
     )
-    return cats.map((name, i) => ({ name, slug: name, count: counts[i] }))
+    return cats.map((slug, i) => ({ name: CATEGORY_DISPLAY[slug] ?? slug, slug, count: counts[i] }))
   } catch {
-    return cats.map(name => ({ name, slug: name, count: 0 }))
+    return cats.map(slug => ({ name: CATEGORY_DISPLAY[slug] ?? slug, slug, count: 0 }))
   }
 }
 
