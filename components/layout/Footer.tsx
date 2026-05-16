@@ -107,12 +107,6 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-orange-500/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/25">
           <p>© {year} Senpai Spot. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            Powered by
-            <span className="text-orange-500/60 mx-1">Blogger</span>
-            &amp; Built with
-            <span className="text-orange-500/60 mx-1">Next.js</span>
-          </p>
         </div>
       </div>
     </footer>
