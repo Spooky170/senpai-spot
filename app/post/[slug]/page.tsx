@@ -169,21 +169,6 @@ export default async function PostPage({ params }: PageProps) {
             </a>
           </div>
 
-          {/* Author bio card */}
-          <div className="mt-12 p-6 rounded-2xl glass border border-orange-500/10">
-            <div className="flex items-start gap-4">
-              <div className="w-14 h-14 rounded-full bg-orange-500/15 border border-orange-500/25 flex items-center justify-center text-2xl font-bold text-orange-500 font-cinzel flex-shrink-0">
-                {post.author.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <p className="text-xs text-orange-500/70 font-accent tracking-widest uppercase mb-1">Written by</p>
-                <h3 className="font-cinzel font-bold text-white text-lg mb-2">{post.author}</h3>
-                <p className="text-sm text-white/45 leading-relaxed">
-                  A passionate anime writer at Senpai Spot, bringing you the latest news, reviews, and deep-dives into the anime world.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Related Posts */}

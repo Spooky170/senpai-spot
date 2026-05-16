@@ -79,7 +79,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   'manga':      'Manga',
   'trending':   'Trending',
   'guides':     'Guides',
-  'general':    'General',
 };
 
 export function getCategoryLabel(slug: string): string {

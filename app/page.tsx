@@ -124,7 +124,6 @@ export default async function HomePage() {
                   { label: 'Reviews',    href: '/reviews',     emoji: '⭐' },
                   { label: 'Manga',      href: '/manga',       emoji: '📖' },
                   { label: 'Trending',   href: '/trending',    emoji: '🔥' },
-                  { label: 'General',    href: '/search?q=general',    emoji: '✍️' },
                 ].map(cat => (
                   <Link
                     key={cat.href}
