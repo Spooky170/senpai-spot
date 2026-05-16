@@ -173,7 +173,7 @@ export async function searchPosts(query: string, count = 20): Promise<BlogPost[]
 }
 
 export async function getCategories(): Promise<BlogCategory[]> {
-  const cats = ['anime-news', 'reviews', 'manga', 'trending', 'editorials', 'lists']
+  const cats = ['anime-news', 'reviews', 'manga', 'trending', 'general']
   try {
     const counts = await Promise.all(
       cats.map(cat =>

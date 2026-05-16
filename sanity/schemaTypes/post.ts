@@ -42,8 +42,6 @@ export const postType = defineType({
           { title: 'Reviews',     value: 'reviews'     },
           { title: 'Manga',       value: 'manga'       },
           { title: 'Trending',    value: 'trending'    },
-          { title: 'Editorials',  value: 'editorials'  },
-          { title: 'Lists',       value: 'lists'       },
           { title: 'General',     value: 'general'     },
         ],
       },
