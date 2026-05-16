@@ -56,7 +56,7 @@ const SECTIONS = [
   {
     num: '10',
     title: 'Governing Law',
-    body: `These Terms are governed by and construed in accordance with the laws of India. Any disputes arising from or related to these Terms or your use of the Site shall be subject to the exclusive jurisdiction of the courts located in India.\n\nIf any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.`,
+    body: `These Terms are governed by and construed in accordance with applicable law. Any disputes arising from or related to these Terms or your use of the Site shall be resolved through good-faith negotiation where possible. If a dispute cannot be resolved informally, it shall be submitted to binding arbitration or the competent courts of the jurisdiction in which Senpai Spot operates.\n\nIf any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.`,
   },
   {
     num: '11',
