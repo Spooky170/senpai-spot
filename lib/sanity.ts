@@ -48,6 +48,16 @@ function toPost(doc: any): BlogPost {
   }
 }
 
+// ─── No-cache fetch wrapper ───────────────────────────────────────────────────
+// Forces Next.js to skip its Data Cache for every Sanity query so
+// publish/unpublish/delete in Sanity is reflected on the next page request.
+
+const NO_CACHE = { next: { revalidate: 0 } } as const
+
+function q(query: string, params?: Record<string, unknown>) {
+  return client.fetch(query, params ?? {}, NO_CACHE)
+}
+
 // ─── Field projections ────────────────────────────────────────────────────────
 
 const FIELDS = `
@@ -60,7 +70,7 @@ const FIELDS_WITH_BODY = `${FIELDS}, body`
 
 export async function getFeaturedPosts(count = 3): Promise<BlogPost[]> {
   try {
-    const docs = await client.fetch(
+    const docs = await q(
       `*[_type == "post"] | order(publishedAt desc) [0...${count}] { ${FIELDS} }`
     )
     return docs.map(toPost)
@@ -72,7 +82,7 @@ export async function getFeaturedPosts(count = 3): Promise<BlogPost[]> {
 
 export async function getLatestPosts(count = 9): Promise<BlogPost[]> {
   try {
-    const docs = await client.fetch(
+    const docs = await q(
       `*[_type == "post"] | order(publishedAt desc) [0...${count}] { ${FIELDS} }`
     )
     return docs.map(toPost)
@@ -86,10 +96,8 @@ export async function getPosts(page = 1, perPage = 9): Promise<PaginatedPosts> {
   try {
     const start = (page - 1) * perPage
     const [docs, total] = await Promise.all([
-      client.fetch(
-        `*[_type == "post"] | order(publishedAt desc) [${start}...${start + perPage}] { ${FIELDS} }`
-      ),
-      client.fetch(`count(*[_type == "post"])`),
+      q(`*[_type == "post"] | order(publishedAt desc) [${start}...${start + perPage}] { ${FIELDS} }`),
+      q(`count(*[_type == "post"])`),
     ])
     return {
       posts: docs.map(toPost),
@@ -110,11 +118,11 @@ export async function getPostsByCategory(
   try {
     const start = (page - 1) * perPage
     const [docs, total] = await Promise.all([
-      client.fetch(
+      q(
         `*[_type == "post" && $cat in categories] | order(publishedAt desc) [${start}...${start + perPage}] { ${FIELDS} }`,
         { cat: category }
       ),
-      client.fetch(
+      q(
         `count(*[_type == "post" && $cat in categories])`,
         { cat: category }
       ),
@@ -134,7 +142,7 @@ export async function getPostsByCategory(
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const doc = await client.fetch(
+    const doc = await q(
       `*[_type == "post" && slug.current == $slug][0] { ${FIELDS_WITH_BODY} }`,
       { slug }
     )
@@ -148,7 +156,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function getRelatedPosts(post: BlogPost, count = 3): Promise<BlogPost[]> {
   try {
     const cat = post.categories[0] || 'general'
-    const docs = await client.fetch(
+    const docs = await q(
       `*[_type == "post" && _id != $id && $cat in categories] | order(publishedAt desc) [0...${count}] { ${FIELDS} }`,
       { id: post.id, cat }
     )
@@ -161,7 +169,7 @@ export async function getRelatedPosts(post: BlogPost, count = 3): Promise<BlogPo
 
 export async function searchPosts(query: string, count = 20): Promise<BlogPost[]> {
   try {
-    const docs = await client.fetch(
+    const docs = await q(
       `*[_type == "post" && (title match $q || excerpt match $q)] | order(publishedAt desc) [0...${count}] { ${FIELDS} }`,
       { q: `*${query}*` }
     )
@@ -184,7 +192,7 @@ export async function getCategories(): Promise<BlogCategory[]> {
   try {
     const counts = await Promise.all(
       cats.map(cat =>
-        client.fetch(`count(*[_type == "post" && $cat in categories])`, { cat })
+        q(`count(*[_type == "post" && $cat in categories])`, { cat })
       )
     )
     return cats.map((slug, i) => ({ name: CATEGORY_DISPLAY[slug] ?? slug, slug, count: counts[i] }))
