@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiTrendingUp, FiTag, FiZap } from 'react-icons/fi';
+import { FiTrendingUp, FiZap } from 'react-icons/fi';
 import { BlogPost, BlogCategory } from '@/types';
-import { formatDate, getCategoryColor, getCategoryLabel } from '@/lib/utils';
+import { formatDate, getCategoryColor } from '@/lib/utils';
 
 interface SidebarProps {
   trendingPosts?: BlogPost[];
@@ -13,7 +13,7 @@ interface SidebarProps {
 export default function Sidebar({
   trendingPosts = [],
   categories    = [],
-  tags          = [],
+  tags: _tags   = [],
 }: SidebarProps) {
   return (
     <aside className="space-y-6 lg:space-y-8">
@@ -90,26 +90,6 @@ export default function Sidebar({
         </div>
       )}
 
-      {/* Tags Widget */}
-      {tags.length > 0 && (
-        <div className="sidebar-widget">
-          <div className="sidebar-widget-header flex items-center gap-2">
-            <FiTag size={14} />
-            Popular Tags
-          </div>
-          <div className="p-4 flex flex-wrap gap-2">
-            {tags.slice(0, 20).map(tag => (
-              <Link
-                key={tag}
-                href={`/search?q=${encodeURIComponent(tag)}`}
-                className="tag-item"
-              >
-                {tag}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Newsletter CTA Widget */}
       <div className="sidebar-widget overflow-hidden">
