@@ -42,9 +42,9 @@ export default async function HomePage() {
           <div className="flex items-center gap-3 p-4 rounded-xl bg-orange-500/8 border border-orange-500/20 text-sm text-orange-400/80">
             <FiZap className="flex-shrink-0" size={16} />
             <span>
-              Showing demo content. Connect your Blogger blog by setting{' '}
-              <code className="font-mono text-orange-400 bg-orange-500/15 px-1 rounded">NEXT_PUBLIC_BLOGGER_URL</code>{' '}
-              in your <code className="font-mono text-orange-400 bg-orange-500/15 px-1 rounded">.env.local</code> file.
+              No posts yet. Go to{' '}
+              <a href="https://senpaispot.sanity.studio/studio" className="underline text-orange-400" target="_blank">senpaispot.sanity.studio</a>{' '}
+              to create and publish your first post.
             </span>
           </div>
         </div>
