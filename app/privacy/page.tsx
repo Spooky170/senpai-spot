@@ -77,7 +77,6 @@ export default function PrivacyPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <ScrollReveal>
           <div className="glass rounded-2xl border border-orange-500/10 p-8 sm:p-10 space-y-8 text-white/60 leading-relaxed text-sm">
             <p>
               This Privacy Policy explains how Senpai Spot ("we", "us", or "our") collects, uses, and protects
@@ -108,7 +107,6 @@ export default function PrivacyPage() {
               </p>
             </div>
           </div>
-        </ScrollReveal>
       </div>
     </PageTransition>
   );
